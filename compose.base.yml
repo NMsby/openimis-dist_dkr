@@ -1,5 +1,10 @@
 x-api: &default-api
   image: ghcr.io/openimis/openimis-be:${BE_TAG:-develop}
+  entrypoint:
+    - /bin/bash
+    - -c
+    - 'pip install -e /aletheia-module --no-deps -q --root-user-action=ignore; exec /bin/bash /openimis-be/script/entrypoint.sh "$@"'
+    - sh
   environment:
     - DB_DEFAULT=${DB_DEFAULT:-postgresql}
     - DB_HOST=${DB_HOST}
@@ -21,6 +26,14 @@ x-api: &default-api
     - OPENSEARCH_HOSTS=${OPENSEARCH_HOSTS}
   volumes:
     - photos:/openimis-be/openIMIS/images/insurees
+    - type: bind
+      source: D:/Dev/aletheia/openimis-be-aletheia_py
+      target: /aletheia-module
+      read_only: false
+    - type: bind
+      source: D:/Dev/aletheia/openimis-dist_dkr/conf/openimis.json
+      target: /openimis-be/openimis.json
+      read_only: true
   depends_on:
     db:
       condition: service_healthy
