@@ -72,6 +72,8 @@ services:
       - ./data/certbot/www:/var/www/certbot
       # comment the following line if you are using your own gateway
       - ./conf/nginx:/conf/
+      - D:/Dev/aletheia/openimis-fe-aletheia_js/public/aletheia-demo.html:/usr/share/nginx/html/front/aletheia-demo.html
+      - D:/Dev/aletheia/openimis-fe-aletheia_js/public/chp-stipend-status.html:/usr/share/nginx/html/front/chp-stipend-status.html
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
