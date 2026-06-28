@@ -76,7 +76,6 @@ services:
       - D:/Dev/aletheia/openimis-fe-aletheia_js/public/chp-stipend-status.html:/usr/share/nginx/html/front/chp-stipend-status.html
       - D:/Dev/aletheia/openimis-fe-aletheia_js/public/public-stipend-dashboard.html:/usr/share/nginx/html/front/public-stipend-dashboard.html
       - D:/Dev/aletheia/openimis-fe-aletheia_js/public/kenya-counties.geojson:/usr/share/nginx/html/front/kenya-counties.geojson
-      - D:/Dev/aletheia/openimis-fe-aletheia_js/public/maplibre-test.html:/usr/share/nginx/html/front/maplibre-test.html
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
